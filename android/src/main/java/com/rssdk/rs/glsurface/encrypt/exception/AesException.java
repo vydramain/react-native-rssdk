@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.glsurface.encrypt.exception;
+package com.rssdk.rs.glsurface.encrypt.exception;
 
 public class AesException extends BaseException {
     public static String EncryptAESError = "encrypt AES error";

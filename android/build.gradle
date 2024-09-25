@@ -9,8 +9,6 @@ buildscript {
 
   dependencies {
     classpath "com.android.tools.build:gradle:7.2.1"
-    // noinspection DifferentKotlinGradleVersion
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
 }
 
@@ -24,7 +22,6 @@ def isNewArchitectureEnabled() {
 }
 
 apply plugin: "com.android.library"
-apply plugin: "kotlin-android"
 
 // !!
 def appProject = rootProject.allprojects.find { it.plugins.hasPlugin('com.android.application') }
@@ -68,17 +65,33 @@ android {
     minSdkVersion getExtOrIntegerDefault("minSdkVersion")
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
 
+    ndk {
+      abiFilters "armeabi-v7a", "arm64-v8a"
+    }
+
     externalNativeBuild {
       cmake {
-        cppFlags "-O2 -frtti -fexceptions -Wall -fstack-protector-all"
-        abiFilters (*reactNativeArchitectures())
+        cppFlags "-O2 -frtti -fexceptions -Wall -fstack-protector-all -std=c++11"
+        arguments "-DANDROID_STL=c++_shared"
+        abiFilters 'armeabi-v7a', 'arm64-v8a'
       }
     }
   }
 
   externalNativeBuild {
     cmake {
-      path "CMakeLists.txt"
+      version "3.22.1"
+      path "src/main/cpp/Android/CMakeLists.txt"
+    }
+  }
+
+  packagingOptions {
+    pickFirst 'lib/*/libc++_shared.so'
+  }
+
+  sourceSets {
+    main {
+      jniLibs.srcDirs = ['libs']
     }
   }
 
@@ -106,19 +119,44 @@ repositories {
 def kotlin_version = getExtOrDefault("kotlinVersion")
 
 dependencies {
+  implementation files('libs/Network-release.aar')
+  implementation files('libs/bccrypto-release.aar')
+
+  // implementation fileTree(dir: "libs", include: ["*.jar"])
+  // https://github.com/LiliaRud/react-native-tuya/tree/master
+  implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+
   // For < 0.71, this will be from the local maven repo
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
-  //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
-  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+  implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+  // https://github.com/LiliaRud/react-native-tuya/tree/master
+  implementation 'com.alibaba:fastjson:1.1.67.android'
+  implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.14.9'
+  // The latest stable App SDK for Android.
+  implementation 'com.facebook.soloader:soloader:0.10.4'
+
+  implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+  implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+  implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+  implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+  implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+  implementation "com.blankj:utilcodex:1.30.6"
 }
 
 // !!
 if (isNewArchitectureEnabled()) {
+  apply plugin: "com.facebook.react"
+
   react {
     jsRootDir = file("../src/")
-    libraryName = "Funsdk"
-    codegenJavaPackageName = "com.funsdk"
+    libraryName = "Rssdk"
+    codegenJavaPackageName = "com.rssdk"
   }
 }
 

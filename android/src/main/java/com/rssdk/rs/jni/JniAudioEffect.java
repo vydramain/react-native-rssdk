@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.jni;
+package com.rssdk.rs.jni;
 
 import android.media.audiofx.AcousticEchoCanceler;
 import android.media.audiofx.AudioEffect;

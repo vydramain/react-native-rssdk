@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.jni;
+package com.rssdk.rs.jni;
 
 import android.content.Context;
 import android.media.AudioAttributes;

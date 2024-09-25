@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.common.log;
+package com.rssdk.rs.common.log;
 
 import android.content.Context;
 

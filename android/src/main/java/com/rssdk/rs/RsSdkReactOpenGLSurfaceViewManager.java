@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs;
+package com.rssdk.rs;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,9 +6,9 @@ import androidx.annotation.Nullable;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
-
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.monitoring.optimus.rs.glsurface.OpenGLSurfaceView;
+
+import com.rssdk.rs.glsurface.OpenGLSurfaceView;
 
 public class RsSdkReactOpenGLSurfaceViewManager extends SimpleViewManager<OpenGLSurfaceView> {
 

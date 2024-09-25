@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.jni;
+package com.rssdk.rs.jni;
 
 public interface JniRsSdkCallback {
     void connction_callback(String param);

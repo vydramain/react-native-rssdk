@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.glsurface;
+package com.rssdk.rs.glsurface;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;

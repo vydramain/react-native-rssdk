@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs;
+package com.rssdk.rs;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -12,8 +12,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
 
-import com.monitoring.optimus.rs.jni.JniRsSdkCallback;
-import com.monitoring.optimus.rs.jni.JniRsSdkWrapper;
+import com.rssdk.rs.jni.JniRsSdkCallback;
+import com.rssdk.rs.jni.JniRsSdkWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;

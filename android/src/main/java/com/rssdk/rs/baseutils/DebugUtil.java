@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.baseutils;
+package com.rssdk.rs.baseutils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

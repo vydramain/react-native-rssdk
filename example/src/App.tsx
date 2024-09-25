@@ -1,30 +1,121 @@
-import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-rssdk';
+import * as React from 'react';
 
+import {
+  ScrollView,
+  //   StyleSheet,
+  //   View,
+  //   Text,
+  TouchableOpacity,
+} from 'react-native';
+// import RNFetchBlob from 'rn-fetch-blob';
+
+// import { RecordPage } from './record';
+import { MonitorPage } from './live';
+// import { WIFIDevice } from './wifi';
+// import { useInit } from './init';
+import {
+  SafeAreaView,
+  // ScrollView,
+  Text,
+} from 'react-native';
+import { useInit } from './init';
+
+// import funsdk from 'react-native-funsdk';
+// import { Share } from './share';
+// import { QRCodeDevice } from './qrcode';
+// import { PushInitLink } from './push';
+
+// Временно используется для тестирования ios
+// По мере добавления в библиотеку методов из ios будет дополняться
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
-
-  useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const { isInit, statusText, reinit } = useInit();
+  const [showInit, setShowInit] = React.useState(true);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      {/* <Text>some random text2 {String(isInit)}</Text> */}
+      <ScrollView
+        // pointerEvents="none"
+        // contentContainerStyle={{ height: 50 }}
+        style={{
+          position: 'absolute',
+          top: 20,
+          left: 0,
+          right: 0,
+          opacity: 0.7,
+          backgroundColor: '#ffffff',
+        }}
+      >
+        {showInit && (
+          <>
+            <Text>isInit: {isInit.toString()}</Text>
+            <Text>text: {statusText?.text}</Text>
+            <Text>value: {JSON.stringify(statusText?.value)}</Text>
+          </>
+        )}
+        <TouchableOpacity
+          style={{ backgroundColor: 'red', height: 30 }}
+          onPress={() => setShowInit((prev) => !prev)}
+        >
+          <Text>show/hide</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'red',
+            height: 50,
+            borderWidth: 2,
+            borderColor: 'yellow',
+          }}
+          onPress={() => reinit()}
+        >
+          <Text>somefunc</Text>
+        </TouchableOpacity>
+      </ScrollView>
+      <MonitorPage isInit={isInit} />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
+// android
+// export default function App() {
+//   const { isInit, statusText } = useInit();
+//   const [showInit, setShowInit] = React.useState(true);
+//   // const path = `file://${RNFetchBlob.fs.dirs.PictureDir}`;
+
+//   return (
+//     <>
+//       {/* <RecordPage /> */}
+//       <MonitorPage isInit={isInit} />
+//       {/* <WIFIDevice /> */}
+//       {/* <QRCodeDevice /> */}
+//       {/* <PushInitLink /> */}
+//       {/* <Share /> */}
+// <ScrollView
+//   // pointerEvents="none"
+//   // contentContainerStyle={{ height: 50 }}
+//   style={{
+//     position: 'absolute',
+//     top: 0,
+//     left: 0,
+//     right: 0,
+//     opacity: 1,
+//     backgroundColor: '#ffffff',
+//   }}
+// >
+//   {showInit && (
+//     <>
+//       <Text>isInit: {isInit.toString()}</Text>
+//       <Text>text: {statusText?.text}</Text>
+//       <Text>value: {JSON.stringify(statusText?.value)}</Text>
+//     </>
+//   )}
+//   <TouchableOpacity
+//     style={{ backgroundColor: 'red' }}
+//     onPress={() => setShowInit((prev) => !prev)}
+//   >
+//     <Text>show/hide</Text>
+//   </TouchableOpacity>
+// </ScrollView>
+//     </>
+//   );
+// }

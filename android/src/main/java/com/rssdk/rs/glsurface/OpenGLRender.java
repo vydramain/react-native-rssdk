@@ -1,15 +1,14 @@
-package com.monitoring.optimus.rs.glsurface;
+package com.rssdk.rs.glsurface;
 
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.rssdk.rs.jni.JniRsSdkWrapper;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import com.monitoring.optimus.rs.jni.JniRsSdkWrapper;
-
 
 @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
 public class OpenGLRender implements GLSurfaceView.Renderer {

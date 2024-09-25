@@ -1,8 +1,8 @@
-package com.monitoring.optimus.rs.glsurface.encrypt;
+package com.rssdk.rs.glsurface.encrypt;
 
 import android.util.Base64;
 
-import com.monitoring.optimus.rs.glsurface.encrypt.exception.AesException;
+import com.rssdk.rs.glsurface.encrypt.exception.AesException;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
@@ -10,7 +10,6 @@ import java.nio.charset.Charset;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-
 
 public class AesBase64Cipher {
     private static final String ALGORITHM = "AES/CBC/NoPadding";

@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.glsurface;
+package com.rssdk.rs.glsurface;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.EncodeUtils;
@@ -6,9 +6,6 @@ import com.blankj.utilcode.util.Utils;
 
 import com.google.gson.reflect.TypeToken;
 
-import com.monitoring.optimus.rs.glsurface.encrypt.PasswordEncrypt;
-
-import com.monitoring.optimus.rs.common.log.RSLog;
 import com.rs.network.rs.api.ApiDefine;
 import com.rs.network.rs.api.ApiLoginInfo;
 import com.rs.network.rs.base.BaseEncPassword;
@@ -21,6 +18,9 @@ import com.rs.network.rs.bean.remotesetting.system.user.UserInfoResponseBean;
 import com.rs.network.rs.function.TransKeyFunction;
 import com.rs.network.rs.function.UserFunction;
 import com.rs.network.rs.util.GsonUtil;
+
+import com.rssdk.rs.common.log.RSLog;
+import com.rssdk.rs.glsurface.encrypt.PasswordEncrypt;
 
 import org.bouncycastle.crypto.InvalidCipherTextException;
 

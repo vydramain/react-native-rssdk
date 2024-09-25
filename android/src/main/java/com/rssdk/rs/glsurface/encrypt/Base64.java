@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.glsurface.encrypt;
+package com.rssdk.rs.glsurface.encrypt;
 
 /**
  * <p>Encodes and decodes to and from Base64 notation.</p>

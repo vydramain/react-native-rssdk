@@ -2,10 +2,7 @@
  *
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
-
-// ------------------------------------------------------------------------
-
-package com.monitoring.optimus.rs.glsurface.encrypt;
+package com.rssdk.rs.glsurface.encrypt;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;

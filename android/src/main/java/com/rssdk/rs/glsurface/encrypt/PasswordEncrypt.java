@@ -1,4 +1,7 @@
-package com.monitoring.optimus.rs.glsurface.encrypt;
+package com.rssdk.rs.glsurface.encrypt;
+
+import static com.rssdk.rs.glsurface.encrypt.Base64.decode;
+import static com.rssdk.rs.glsurface.encrypt.Base64.encodeBytes;
 
 import android.util.Base64;
 
@@ -192,8 +195,8 @@ public class PasswordEncrypt {
         String b64xKey = b64xKeyWith0.substring(1);
         AsymmetricCipherKeyPair keyPair = generateKeyPair();
         X25519PublicKeyParameters publicKeyParameters = (X25519PublicKeyParameters) keyPair.getPublic();
-        String peerKey = "0" + com.monitoring.optimus.rs.glsurface.encrypt.Base64.encodeBytes(publicKeyParameters.getEncoded());
-        byte[] shareSecret = generateShareSecret(com.monitoring.optimus.rs.glsurface.encrypt.Base64.decode(b64xKey), keyPair);
+        String peerKey = "0" + encodeBytes(publicKeyParameters.getEncoded());
+        byte[] shareSecret = generateShareSecret(decode(b64xKey), keyPair);
         String expKey = "expand key";
         String expIv = "expand iv";
 
@@ -209,7 +212,7 @@ public class PasswordEncrypt {
         System.arraycopy(expandIv, 0, result, cryptOut.length - mac.length, expandIv.length);
         System.arraycopy(mac, 0, result, cryptOut.length - mac.length + expandIv.length, mac.length);
 
-        String cipher = "0" + com.monitoring.optimus.rs.glsurface.encrypt.Base64.encodeBytes(result);
+        String cipher = "0" + encodeBytes(result);
 
         BaseEncPassword baseEncPassword = new BaseEncPassword();
         baseEncPassword.cipher = cipher;

@@ -1,4 +1,4 @@
-package com.monitoring.optimus.rs.glsurface.encrypt;
+package com.rssdk.rs.glsurface.encrypt;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
@@ -8,7 +8,6 @@ import java.security.spec.KeySpec;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-
 
 public class PasswordEncryption {
 
