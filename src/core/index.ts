@@ -1,7 +1,3 @@
-import { NativeModules } from 'react-native';
-
-const { RsSdkReactJavaModule } = NativeModules;
-
 export enum CUSTOM_PWD_TYPE {
   E_PWD_GENERAL, // Default, universal encryption (MD5 encryption)
   E_PWD_QUNGUANG, // is a special case before compatibility. Prefix is "QunGuang_". Prefix is added before encryption
@@ -18,9 +14,8 @@ export type SDKInitParams = {
   customPort: number;
 };
 
-// export function SDKInit(params: FunSDKInitParams): Promise<any> {
-export function SDKInit(params: SDKInitParams): Promise<any> {
-  return new Promise(function () {});
+export function SDKInit(): Promise<any> {
+  return new Promise(() => {});
 }
 
 export type FunSDKSysSetServerIPPortParams = {

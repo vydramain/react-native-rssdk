@@ -1,43 +1,10 @@
-import { NativeModules } from 'react-native';
-
-const { RsSdkReactJavaModule } = NativeModules;
-
-// previous
-// export type AddDeviceParams = {
-//   deviceId: string;
-//   username: string;
-//   password: string;
-//   deviceName: string;
-//   deviceType: string;
-// };
-
-export type AddDeviceParams = {
-  // SerialNumber / IP / DNS
-  deviceId?: string;
-  username?: string;
-  password?: string;
-  deviceName?: string;
-  deviceType?: any;
-  deviceIp?: string;
-  DMZTcpPort?: number;
-  deviceIdNum?: number;
-};
-
 /**
- * deviceId can be as:
- *
- * SerialNumber / IP / DNS
- *
- *
- * add dev by deviceId:
- *
- *  deviceId: string;
- *  username: string;
- *  password: string;
- *  deviceName: string;
+ * Just empty function because RS doesn't support external device management
  */
-export function addDevice(params: AddDeviceParams): Promise<any> {
-  return new Promise(function () {});
+export function addDevice(): Promise<any> {
+  return new Promise(() => {
+    return true;
+  });
 }
 
 export type DeleteDeviceParams = {
@@ -45,8 +12,10 @@ export type DeleteDeviceParams = {
 };
 
 /**
- * status number in answer
+ * Just empty function because RS doesn't support external device management
  */
-export function deleteDevice(params: DeleteDeviceParams): Promise<number> {
-  return new Promise(function () {});
+export function deleteDevice(): Promise<number> {
+  return new Promise(() => {
+    return true;
+  });
 }
