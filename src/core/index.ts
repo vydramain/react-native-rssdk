@@ -17,38 +17,3 @@ export type SDKInitParams = {
 export function SDKInit(): Promise<any> {
   return new Promise(() => {});
 }
-
-export type FunSDKSysSetServerIPPortParams = {
-  serverKey:
-    | 'APP_SERVER'
-    | 'STATUS_P2P_SERVER'
-    | 'STATUS_DSS_SERVER'
-    | 'STATUS_RPS_SERVER'
-    | 'STATUS_IDR_SERVER'
-    | 'HLS_DSS_SERVER'
-    | 'CONFIG_SERVER'
-    | 'UPGRADE_SERVER'
-    | 'CAPS_SERVER'
-    | string;
-  serverIpOrDomain: string;
-  serverPort: number;
-};
-
-/**
- * Use after initialization
- *
- * server keys: 'APP_SERVER'
- , 'STATUS_P2P_SERVER'
- , 'STATUS_DSS_SERVER'
- , 'STATUS_RPS_SERVER'
- , 'STATUS_IDR_SERVER'
- , 'HLS_DSS_SERVER'
- , 'CONFIG_SERVER'
- , 'UPGRADE_SERVER'
- , 'CAPS_SERVER'
- */
-// export function funSDKSysSetServerIPPort(
-//   params: FunSDKSysSetServerIPPortParams
-// ) {
-//   funsdk.SysSetServerIPPort(params);
-// }

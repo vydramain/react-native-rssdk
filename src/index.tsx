@@ -22,10 +22,11 @@
 // }
 
 export * from './core';
-export * from './enums';
-export * from './register';
-export * from './login';
 export * from './device';
+export * from './enums';
+export * from './info';
+export * from './login';
 export * from './monitor';
+export * from './register';
 export * from './types';
 export * from './utils';
