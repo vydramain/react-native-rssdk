@@ -1,7 +1,7 @@
 import React, { type RefObject } from 'react';
 import { NativeModules, type ViewProps } from 'react-native';
 
-const { RsSdkReactJavaModule, RsSdkReactOpenGLSurfaceView } = NativeModules;
+const { RsSdkReactOpenGLSurfaceView } = NativeModules;
 
 import {
   requireNativeComponent,

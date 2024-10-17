@@ -17,7 +17,7 @@ export type GetDeviceStateParams = {
 /*
  * deviceId: string;
  */
-export function getDeviceState(params: GetDeviceStateParams): Promise<any> {
+export function getDeviceState(_params: GetDeviceStateParams): Promise<any> {
   return new Promise(function () {});
 }
 

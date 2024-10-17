@@ -9,6 +9,8 @@ buildscript {
 
   dependencies {
     classpath "com.android.tools.build:gradle:7.2.1"
+    // noinspection DifferentKotlinGradleVersion
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
 }
 
@@ -22,9 +24,7 @@ def isNewArchitectureEnabled() {
 }
 
 apply plugin: "com.android.library"
-
-// !!
-def appProject = rootProject.allprojects.find { it.plugins.hasPlugin('com.android.application') }
+apply plugin: "kotlin-android"
 
 if (isNewArchitectureEnabled()) {
   apply plugin: "com.facebook.react"
@@ -66,38 +66,31 @@ android {
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
 
     ndk {
-      abiFilters "armeabi-v7a", "arm64-v8a"
+      abiFilters (*reactNativeArchitectures())
     }
 
     externalNativeBuild {
       cmake {
-        cppFlags "-O2 -frtti -fexceptions -Wall -fstack-protector-all -std=c++11"
         arguments "-DANDROID_STL=c++_shared"
-        abiFilters 'armeabi-v7a', 'arm64-v8a'
+        cppFlags "-O2 -frtti -fexceptions -Wall -fstack-protector-all -std=c++11"
+        abiFilters (*reactNativeArchitectures())
       }
     }
   }
 
   externalNativeBuild {
     cmake {
-      version "3.22.1"
-      path "src/main/cpp/Android/CMakeLists.txt"
-    }
-  }
-
-  packagingOptions {
-    pickFirst 'lib/*/libc++_shared.so'
-  }
-
-  sourceSets {
-    main {
-      jniLibs.srcDirs = ['libs']
+      path "CMakeLists.txt"
     }
   }
 
   buildTypes {
     release {
       minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+    debug {
+      jniDebuggable true
     }
   }
 
@@ -105,9 +98,22 @@ android {
     disable "GradleCompatible"
   }
 
+  externalNativeBuild {
+    cmake {
+      path "src/main/cpp/Android/CMakeLists.txt"
+      version "3.10.2"
+    }
+  }
+
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  sourceSets {
+    main {
+      jniLibs.srcDirs = ['libs']
+    }
   }
 }
 
@@ -119,44 +125,28 @@ repositories {
 def kotlin_version = getExtOrDefault("kotlinVersion")
 
 dependencies {
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+
   implementation files('libs/Network-release.aar')
   implementation files('libs/bccrypto-release.aar')
-
-  // implementation fileTree(dir: "libs", include: ["*.jar"])
-  // https://github.com/LiliaRud/react-native-tuya/tree/master
-  implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
-
-  // For < 0.71, this will be from the local maven repo
-  // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
-  implementation "com.facebook.react:react-native:+"
-
-  implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
-  implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-
-  // https://github.com/LiliaRud/react-native-tuya/tree/master
-  implementation 'com.alibaba:fastjson:1.1.67.android'
-  implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.14.9'
-  // The latest stable App SDK for Android.
-  implementation 'com.facebook.soloader:soloader:0.10.4'
 
   implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
   implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
   implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-  implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-  implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
-  implementation "com.blankj:utilcodex:1.30.6"
-}
+  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+  implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+  implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+  implementation "com.blankj:utilcodex:1.31.1"
 
-// !!
-if (isNewArchitectureEnabled()) {
-  apply plugin: "com.facebook.react"
+  testImplementation 'junit:junit:4.13.2'
+  androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-  react {
-    jsRootDir = file("../src/")
-    libraryName = "Rssdk"
-    codegenJavaPackageName = "com.rssdk"
-  }
+  // For < 0.71, this will be from the local maven repo
+  // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
+  //noinspection GradleDynamicVersion
+  implementation "com.facebook.react:react-native:+"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 

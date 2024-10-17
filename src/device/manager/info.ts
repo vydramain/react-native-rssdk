@@ -1,7 +1,3 @@
-import { NativeModules } from 'react-native';
-
-const { RsSdkReactJavaModule } = NativeModules;
-
 import type {
   DeviceIdParams,
   DeviceManagerPromiseSuccessType,
@@ -15,7 +11,7 @@ type IsDeviceFunctionSupportParams = {
 };
 
 export function isDeviceFunctionSupport(
-  params: IsDeviceFunctionSupportParams
+  _params: IsDeviceFunctionSupportParams
 ): Promise<
   DeviceManagerPromiseSuccessType & {
     value: boolean;
@@ -25,30 +21,30 @@ export function isDeviceFunctionSupport(
 }
 
 export function getDeviceModel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getSoftWareVersion(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getBuildTime(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getHardWare(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType & { value: string }> {
   return new Promise(function () {});
 }
 
-export function getDigChannel(params: DeviceIdParams): Promise<
+export function getDigChannel(_params: DeviceIdParams): Promise<
   DeviceManagerPromiseSuccessType & {
     value: number;
   }
@@ -57,85 +53,85 @@ export function getDigChannel(params: DeviceIdParams): Promise<
 }
 
 export function getExtraChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getVideoInChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getTalkInChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getAlarmInChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getAlarmOutChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getCombineSwitch(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getVideoOutChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getAudioInChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getTalkOutChannel(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getUpdataTime(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getEncryptVersion(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getDeviceRunTime(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getHardWareVersion(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function getMcuVersion(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
@@ -157,7 +153,7 @@ export enum networkMode {
 }
 
 export function getNetworkMode(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<{ value: networkMode }> {
   return new Promise(function () {});
 }
@@ -179,20 +175,20 @@ export function getSecret(): Promise<SecretPromiseSuccessType> {
   return new Promise(function () {});
 }
 
-export function getFunStrAttr(params: {
+export function getFunStrAttr(_params: {
   FunStrAttr: EFUN_ATTR;
 }): Promise<string> {
   return new Promise(function () {});
 }
 
-export function devGetLocalUserName(params: DeviceIdParams): Promise<string> {
+export function devGetLocalUserName(_params: DeviceIdParams): Promise<string> {
   return new Promise(function () {});
 }
 
-export function getDevType(params: DeviceIdParams): Promise<number> {
+export function getDevType(_params: DeviceIdParams): Promise<number> {
   return new Promise(function () {});
 }
 
-export function devGetLocalEncToken(params: DeviceIdParams): Promise<string> {
+export function devGetLocalEncToken(_params: DeviceIdParams): Promise<string> {
   return new Promise(function () {});
 }

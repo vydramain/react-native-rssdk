@@ -1,7 +1,7 @@
 {
   "name": "react-native-rssdk",
   "version": "0.1.0",
-  "description": "React Native module for RayShark SDK optimized for Optimus Monitoring",
+  "description": "React Native provider of RayShark SDK",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -53,7 +53,7 @@
     "type": "git",
     "url": "git+https://github.com/vydramain/react-native-rssdk.git"
   },
-  "author": "vydra <69751912+vydramain@users.noreply.github.com> (https://github.com/vydramain)",
+  "author": "Andrey Ustyantsev <andrey.ustyantsev@7bits.it> (https://github.com/vydramain)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vydramain/react-native-rssdk/issues"
@@ -77,7 +77,7 @@
     "jest": "^29.7.0",
     "prettier": "^3.0.3",
     "react": "18.3.1",
-    "react-native": "0.75.3",
+    "react-native": "0.75.4",
     "react-native-builder-bob": "^0.30.2",
     "release-it": "^15.0.0",
     "turbo": "^1.10.7",
@@ -130,6 +130,8 @@
       "prettier"
     ],
     "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "off",
       "react/react-in-jsx-scope": "off",
       "prettier/prettier": [
         "error",

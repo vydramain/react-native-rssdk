@@ -1,12 +1,8 @@
-import { NativeModules } from 'react-native';
-
-const { RsSdkReactJavaModule } = NativeModules;
-
 export type UserCheckParams = {
   username: string;
 };
 
-export function userCheck(params: UserCheckParams): Promise<any> {
+export function userCheck(_params: UserCheckParams): Promise<any> {
   return new Promise(function () {});
 }
 
@@ -14,7 +10,7 @@ export type SendEmailCodeParams = {
   email: string;
 };
 
-export function sendEmailCode(params: SendEmailCodeParams): Promise<any> {
+export function sendEmailCode(_params: SendEmailCodeParams): Promise<any> {
   return new Promise(function () {});
 }
 
@@ -23,7 +19,7 @@ export type SendPhoneCodeParams = {
   phoneNumber: string;
 };
 
-export function sendPhoneCode(params: SendPhoneCodeParams): Promise<any> {
+export function sendPhoneCode(_params: SendPhoneCodeParams): Promise<any> {
   return new Promise(function () {});
 }
 
@@ -34,7 +30,7 @@ export type RegisterByPhoneParams = {
   phoneNumber: string;
 };
 
-export function registerByPhone(params: RegisterByPhoneParams): Promise<any> {
+export function registerByPhone(_params: RegisterByPhoneParams): Promise<any> {
   return new Promise(function () {});
 }
 
@@ -45,7 +41,7 @@ export type RegisterByEmailParams = {
   verifyCode: string;
 };
 
-export function registerByEmail(params: RegisterByEmailParams): Promise<any> {
+export function registerByEmail(_params: RegisterByEmailParams): Promise<any> {
   return new Promise(function () {});
 }
 
@@ -55,7 +51,7 @@ export type RegisterByNotBindParams = {
 };
 
 export function registerByNotBind(
-  params: RegisterByNotBindParams
+  _params: RegisterByNotBindParams
 ): Promise<any> {
   return new Promise(function () {});
 }

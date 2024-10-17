@@ -1,6 +1,6 @@
 # react-native-rssdk
 
-React Native module for RayShark SDK optimized for Optimus Monitoring
+React Native provider of RayShark SDK
 
 ## Installation
 

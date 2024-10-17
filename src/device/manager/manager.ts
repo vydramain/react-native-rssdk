@@ -1,7 +1,3 @@
-import { NativeModules } from 'react-native';
-
-const { RsSdkReactJavaModule } = NativeModules;
-
 import type {
   DeviceCredentialParams,
   DeviceIdParams,
@@ -11,7 +7,7 @@ import type {
 } from './types';
 
 export function loginDevice(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
@@ -20,7 +16,7 @@ export type LoginDeviceWithCredentialResponse =
   DeviceManagerPromiseSuccessType & { value: DeviceInfoType };
 
 export function loginDeviceWithCredential(
-  params: DeviceCredentialParams
+  _params: DeviceCredentialParams
 ): Promise<LoginDeviceWithCredentialResponse> {
   return new Promise(function () {});
 }
@@ -43,11 +39,11 @@ export function loginDeviceWithCredential(
 //   return funsdk.loginDeviceByLowPowerWithCredential(params);
 // }
 
-export function logoutDevice(params: DeviceIdParams): Promise<true> {
+export function logoutDevice(_params: DeviceIdParams): Promise<true> {
   return new Promise(function () {});
 }
 
-export function getChannelInfo(params: DeviceIdParams): Promise<
+export function getChannelInfo(_params: DeviceIdParams): Promise<
   DeviceManagerPromiseSuccessType & {
     value: {
       canUsedChannelSize: number;
@@ -60,7 +56,7 @@ export function getChannelInfo(params: DeviceIdParams): Promise<
   return new Promise(function () {});
 }
 
-export function getChannelCount(params: DeviceIdParams): Promise<number> {
+export function getChannelCount(_params: DeviceIdParams): Promise<number> {
   return new Promise(function () {});
 }
 
@@ -85,7 +81,7 @@ export type ModifyDevicePasswordParams = DeviceCredentialParams & {
 };
 
 export function modifyDevicePassword(
-  params: ModifyDevicePasswordParams
+  _params: ModifyDevicePasswordParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
@@ -95,7 +91,7 @@ export type ModifyDeviceNameParams = DeviceIdParams & {
 };
 
 export function modifyDeviceName(
-  params: ModifyDeviceNameParams
+  _params: ModifyDeviceNameParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
@@ -109,24 +105,24 @@ export type DevicePTZControlParams = {
 };
 
 export function devicePTZcontrol(
-  params: DevicePTZControlParams
+  _params: DevicePTZControlParams
 ): Promise<boolean> {
-  const withDefaultParams: Required<DevicePTZControlParams> = {
-    speed: 4,
-    ...params,
-  };
+  // const withDefaultParams: Required<DevicePTZControlParams> = {
+  //   speed: 4,
+  //   ...params,
+  // };
 
   return new Promise(function () {});
 }
 
 export function resetDeviceConfig(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
 
 export function rebootDevice(
-  params: DeviceIdParams
+  _params: DeviceIdParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
@@ -137,7 +133,7 @@ export type CaptureFromDeviceAndSaveToDeviceParams = {
 };
 
 export function captureFromDeviceAndSaveToDevice(
-  params: CaptureFromDeviceAndSaveToDeviceParams
+  _params: CaptureFromDeviceAndSaveToDeviceParams
 ): Promise<DeviceManagerPromiseSuccessType> {
   return new Promise(function () {});
 }
